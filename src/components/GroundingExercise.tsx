@@ -114,7 +114,7 @@ const GroundingExercise = () => {
     <div className="min-h-screen flex flex-col bg-background">
       {/* Breathing circle background decoration */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[500px] h-[500px] rounded-full bg-accent/30 breathing-circle" />
+        <div className="w-[500px] h-[500px] rounded-full bg-accent/50 breathing-circle" />
       </div>
 
       {/* Progress */}
