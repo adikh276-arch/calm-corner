@@ -1,0 +1,55 @@
+{
+    "app": {
+        "title": "Calm Corner",
+        "welcome": "Welcome to Calm Corner",
+        "language": "Language"
+    },
+    "steps": {
+        "0": {
+            "heading": null,
+            "body": "Let's take a short pause together.\n\nFor the next minute, there's nothing you need to solve, fix, or respond to. Just allow yourself to slow down.\n\nSit comfortably, place your feet on the ground if you can, and gently take a slow breath in… and slowly breathe out.\n\nThis is your moment to reset and reconnect with the present.",
+            "button": "Begin"
+        },
+        "1": {
+            "heading": "5 Things You Can See",
+            "body": "Slowly look around you. Let your eyes move gently across the space. Notice colors, shapes, light, shadows, or small details you may not have paid attention to before.",
+            "button": "Next"
+        },
+        "2": {
+            "heading": "4 Things You Can Feel",
+            "body": "Bring your attention to your body. Feel your feet touching the floor, your back against the chair, your clothes on your skin, or the air around you. Acknowledge four physical sensations.",
+            "button": "Next"
+        },
+        "3": {
+            "heading": "3 Things You Can Hear",
+            "body": "Listen carefully. You might hear distant sounds, a fan, typing, breathing, or even silence. Identify three sounds without judging them.",
+            "button": "Next"
+        },
+        "4": {
+            "heading": "2 Things You Can Smell",
+            "body": "See if you can detect any scent in the room. If nothing stands out, simply notice the neutral smell of the air around you.",
+            "button": "Next"
+        },
+        "5": {
+            "heading": "1 Thing You Can Taste",
+            "body": "Pay attention to the taste in your mouth. It could be subtle or neutral — just observe it.",
+            "button": "Next"
+        },
+        "6": {
+            "heading": "Reflection",
+            "body": "Take one slow breath in… and gently breathe out.",
+            "button": "Submit",
+            "reflectionPrompt": true
+        }
+    },
+    "reflection": {
+        "prompt": "In one word, how do you feel right now?",
+        "placeholder": "e.g. calm, relieved, grounded…"
+    },
+    "completed": {
+        "title": "Thank you",
+        "message": "You've completed the grounding exercise. Carry this sense of presence with you as you continue your day.",
+        "startAgain": "Start Again",
+        "youFeel": "You feel:"
+    }
+}

@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useTranslation } from 'react-i18next';
 import ProgressDots from "@/components/ProgressDots";
 import GroundingButton from "@/components/GroundingButton";
 import StepInput from "@/components/StepInput";
@@ -52,6 +53,7 @@ const STEPS = [
 const TOTAL_STEPS = STEPS.length;
 
 const GroundingExercise = () => {
+  const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(0);
   const [responses, setResponses] = useState<Record<number, string[]>>({});
   const [reflectionWord, setReflectionWord] = useState("");
@@ -79,19 +81,19 @@ const GroundingExercise = () => {
         <div className="text-center max-w-md fade-in">
           <div className="w-20 h-20 rounded-full bg-accent mx-auto mb-8 flex items-center justify-center">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent-foreground">
-              <path d="M20 6 9 17l-5-5"/>
+              <path d="M20 6 9 17l-5-5" />
             </svg>
           </div>
           <h2 className="font-display text-3xl font-light text-foreground mb-4">
-            Thank you
+            {t('completed.title')}
           </h2>
           {reflectionWord && (
             <p className="font-body text-muted-foreground text-sm mb-6">
-              You feel: <span className="text-foreground font-medium italic">{reflectionWord}</span>
+              {t('completed.youFeel')} <span className="text-foreground font-medium italic">{reflectionWord}</span>
             </p>
           )}
           <p className="font-body text-muted-foreground text-sm leading-relaxed mb-10">
-            You've completed the grounding exercise. Carry this sense of presence with you as you continue your day.
+            {t('completed.message')}
           </p>
           <GroundingButton
             variant="secondary"
@@ -103,7 +105,7 @@ const GroundingExercise = () => {
               setAnimKey((k) => k + 1);
             }}
           >
-            Start Again
+            {t('completed.startAgain')}
           </GroundingButton>
         </div>
       </div>
@@ -137,18 +139,17 @@ const GroundingExercise = () => {
           {/* Heading */}
           {step.heading && (
             <h1 className="font-display text-3xl md:text-4xl font-light text-foreground mb-6 fade-in">
-              {step.heading}
+              {typeof step.heading === 'string' ? t(`steps.${currentStep}.heading`) : null}
             </h1>
           )}
 
           {/* Body text */}
           <div className="fade-in-delayed">
-            {step.body.split("\n\n").map((paragraph, i) => (
+            {t(`steps.${currentStep}.body`).split("\n\n").map((paragraph, i) => (
               <p
                 key={i}
-                className={`font-body text-sm md:text-base leading-relaxed text-muted-foreground ${
-                  i < step.body.split("\n\n").length - 1 ? "mb-4" : "mb-8"
-                } ${currentStep === 0 ? "text-base md:text-lg" : ""}`}
+                className={`font-body text-sm md:text-base leading-relaxed text-muted-foreground ${i < step.body.split("\n\n").length - 1 ? "mb-4" : "mb-8"
+                  } ${currentStep === 0 ? "text-base md:text-lg" : ""}`}
               >
                 {paragraph}
               </p>
@@ -170,13 +171,13 @@ const GroundingExercise = () => {
           {step.reflectionPrompt && (
             <div className="mb-8 fade-in-delayed max-w-sm mx-auto">
               <p className="font-body text-xs text-muted-foreground mb-3 tracking-wide uppercase">
-                In one word, how do you feel right now?
+                {t('reflection.prompt')}
               </p>
               <input
                 type="text"
                 value={reflectionWord}
                 onChange={(e) => setReflectionWord(e.target.value)}
-                placeholder="e.g. calm, relieved, grounded…"
+                placeholder={t('reflection.placeholder')}
                 className="w-full bg-card border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground text-center placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all duration-300"
               />
             </div>
@@ -185,7 +186,7 @@ const GroundingExercise = () => {
           {/* Action button */}
           <div className="fade-in-delayed" style={{ animationDelay: "0.5s" }}>
             <GroundingButton onClick={handleNext}>
-              {step.button}
+              {t(`steps.${currentStep}.button`)}
             </GroundingButton>
           </div>
         </div>
