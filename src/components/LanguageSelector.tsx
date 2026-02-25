@@ -73,7 +73,11 @@ const LanguageSelector: React.FC = () => {
         setLoading(true);
         try {
             const [keys, vals] = flatten(en);
-            const resp = await fetch('http://localhost:3001/translate', {
+            const PROXY = import.meta.env.VITE_TRANSLATE_PROXY_URL || '';
+            const proxyBase = PROXY ? PROXY.replace(/\/$/, '') : '';
+            const url = proxyBase ? `${proxyBase}/translate` : '/translate';
+
+            const resp = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ q: vals, target: next, source: 'en' }),
